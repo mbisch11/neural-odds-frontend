@@ -66,14 +66,14 @@ function MatchupCard(props: matchupCardProps) {
             {/* Spread */}
             <div
               className={`w-[22.22%] flex flex-col items-center justify-center border-l border-secondary/10 cursor-pointer transition-all duration-150 ${
-                picks.spread_pick == "home"
+                picks?.spread_pick == "home"
                   ? "bg-accent text-black shadow-md"
                   : "bg-gray-700/30 text-white hover:bg-gray-700/40"
               }`}
             >
               <div className="text-sm font-bold">{gameData.home_handicap}</div>
               <div
-                className={`text-lg font-extrabold ${picks.spread_pick == "home" ? "text-black" : "text-green-400"}`}
+                className={`text-lg font-extrabold ${picks?.spread_pick == "home" ? "text-black" : "text-white"}`}
               >
                 {gameData.home_odds_spread}
               </div>
@@ -82,13 +82,13 @@ function MatchupCard(props: matchupCardProps) {
             {/* Over */}
             <div
               className={`w-[22.22%] flex flex-col items-center justify-center border-l border-secondary/10 cursor-pointer transition-all duration-150 ${
-                picks.total_pick == true
+                picks?.total_pick == true
                   ? "bg-accent text-black shadow-md"
                   : "bg-gray-700/30 text-white hover:bg-gray-700/40"
               }`}
             >
               <div className="text-sm font-bold">O {gameData.over_under_total}</div>
-              <div className={`text-lg font-extrabold ${picks.total_pick == true ? "text-black" : "text-green-400"}`}>
+              <div className={`text-lg font-extrabold ${picks?.total_pick == true ? "text-black" : "text-white"}`}>
                 {gameData.over_odd}
               </div>
             </div>
@@ -96,13 +96,13 @@ function MatchupCard(props: matchupCardProps) {
             {/* Moneyline */}
             <div
               className={`w-[22.22%] flex flex-col items-center justify-center border-l border-secondary/10 cursor-pointer transition-all duration-150 ${
-                picks.moneyline_pick == "home"
+                picks?.moneyline_pick == "home"
                   ? "bg-accent text-black shadow-md"
                   : "bg-gray-700/30 text-white hover:bg-gray-700/40"
               }`}
             >
               <div
-                className={`text-lg font-extrabold ${picks.moneyline_pick == "home" ? "text-black" : "text-green-400"}`}
+                className={`text-lg font-extrabold ${picks?.moneyline_pick == "home" ? "text-black" : "text-white"}`}
               >
                 {gameData.home_odds_ml}
               </div>
@@ -126,14 +126,14 @@ function MatchupCard(props: matchupCardProps) {
             {/* Spread */}
             <div
               className={`w-[22.22%] flex flex-col items-center justify-center border-l border-secondary/10 cursor-pointer transition-all duration-150 ${
-                picks.spread_pick == "away"
+                picks?.spread_pick == "away"
                   ? "bg-accent text-black shadow-md"
                   : "bg-gray-700/30 text-white hover:bg-gray-700/40"
               }`}
             >
               <div className="text-sm font-bold">{gameData.away_handicap}</div>
               <div
-                className={`text-lg font-extrabold ${picks.spread_pick == "away" ? "text-black" : "text-green-400"}`}
+                className={`text-lg font-extrabold ${picks?.spread_pick == "away" ? "text-black" : "text-white"}`}
               >
                 {gameData.away_odds_spread}
               </div>
@@ -142,13 +142,13 @@ function MatchupCard(props: matchupCardProps) {
             {/* Under */}
             <div
               className={`w-[22.22%] flex flex-col items-center justify-center border-l border-secondary/10 cursor-pointer transition-all duration-150 ${
-                picks.total_pick == false
+                picks?.total_pick == false
                   ? "bg-accent text-black shadow-md"
                   : "bg-gray-700/30 text-white hover:bg-gray-700/40"
               }`}
             >
               <div className="text-sm font-bold">U {gameData.over_under_total}</div>
-              <div className={`text-lg font-extrabold ${picks.total_pick == false ? "text-black" : "text-green-400"}`}>
+              <div className={`text-lg font-extrabold ${picks?.total_pick == false ? "text-black" : "text-white"}`}>
                 {gameData.under_odd}
               </div>
             </div>
@@ -156,13 +156,13 @@ function MatchupCard(props: matchupCardProps) {
             {/* Moneyline */}
             <div
               className={`w-[22.22%] flex flex-col items-center justify-center border-l border-secondary/10 cursor-pointer transition-all duration-150 ${
-                picks.moneyline_pick == "away"
+                picks?.moneyline_pick == "away"
                   ? "bg-accent text-black shadow-md"
                   : "bg-gray-700/30 text-white hover:bg-gray-700/40"
               }`}
             >
               <div
-                className={`text-lg font-extrabold ${picks.moneyline_pick == "away" ? "text-black" : "text-green-400"}`}
+                className={`text-lg font-extrabold ${picks?.moneyline_pick == "away" ? "text-black" : "text-white"}`}
               >
                 {gameData.away_odds_ml}
               </div>
@@ -174,73 +174,3 @@ function MatchupCard(props: matchupCardProps) {
   )
 }
 export default MatchupCard
-
-
-
-
-/*import { useEffect, useState } from "react";
-import type { GamePicks, TeamDetails } from "../services/types";
-
-interface matchupCardProps {
-    gameData : any,
-    picks : GamePicks,
-    homeTeamData : TeamDetails,
-    awayTeamData : TeamDetails
-}
-
-function MatchupCard(props : matchupCardProps){
-    const [gameData] = useState<any>(props.gameData);
-    const [picks] = useState<GamePicks>(props.picks);
-    const [homeTeamData] = useState<TeamDetails>(props.homeTeamData);
-    const [awayTeamData] = useState<TeamDetails>(props.awayTeamData);
-
-    useEffect(() => {
-        console.log(props);
-    })
-
-    const matchTime = gameData.event_date.toLocaleString();
-
-    return(
-        <>
-            <div className="bg-tertiary rounded-2xl flex flex-col h-fit p-2.5 gap-2">
-                <div id="topRow" className="flex flex-row gap-2">
-                    <div id="homeTeam" className="gap-3 flex flex-row w-1/3 p-2">
-                        <img src={homeTeamData.team_badge} className="w-8 aspect-square"></img>
-                        <h3 className="md:text-xl mobile:text-lg">{homeTeamData.name}</h3>
-                    </div>
-                    <div id="homeML" className={`w-2/9 rounded-tl-2xl ${picks.moneyline_pick == 'home' ? "bg-accent text-black" : "bg-gray-300/45 text-white"}`}>
-                        <h3 className="md:text-xl mobile:text-lg">Moneyline</h3>
-                        <h3 className="md:text-xl mobile:text-lg">{gameData.home_odds_ml}</h3>
-                    </div>
-                    <div id="homeSpread" className={`w-2/9 ${picks.spread_pick == 'home' ? "bg-accent text-black" : "bg-gray-300/45 text-white"}`}>
-                        <h3 className="md:text-xl mobile:text-lg">{gameData.home_handicap}</h3>
-                        <h3 className="md:text-xl mobile:text-lg">{gameData.away_odds_spread}</h3>
-                    </div>
-                    <div id="over" className={`w-2/9 rounded-tr-2xl ${picks.total_pick == true ? "bg-accent text-black" : "bg-gray-300/45 text-white"}`}>
-                        <h3 className="md:text-xl mobile:text-lg">Over {gameData.over_under_total}</h3>
-                        <h3 className="md:text-xl mobile:text-lg">{gameData.over_odd}</h3>
-                    </div> 
-                </div>
-                <div id="bottomRow" className="flex flex-row gap-2">
-                    <div id="awayTeam" className="gap-3 flex flex-row w-1/3 p-2">
-                        <img src={awayTeamData.team_badge} className="w-8 aspect-square"></img>
-                        <h3 className="md:text-xl mobile:text-lg">{awayTeamData.name}</h3>
-                    </div>
-                    <div id="awayML" className={`w-2/9 rounded-bl-2xl ${picks.moneyline_pick == 'away' ? "bg-accent text-black" : "bg-gray-300/45 text-white"}`}>
-                        <h3 className="md:text-xl mobile:text-lg">Moneyline</h3>
-                        <h3 className="md:text-xl mobile:text-lg">{gameData.away_odds_ml}</h3>
-                    </div>
-                    <div id="awaySpread" className={`w-2/9 ${picks.spread_pick == 'away' ? "bg-accent text-black" : "bg-gray-300/45 text-white"}`}>
-                        <h3 className="md:text-xl mobile:text-lg">{gameData.away_handicap}</h3>
-                        <h3 className="md:text-xl mobile:text-lg">{gameData.away_odds_spread}</h3>
-                    </div>
-                    <div id="under" className={`w-2/9 rounded-br-2xl ${picks.total_pick == false ? "bg-accent text-black" : "bg-gray-300/45 text-white"}`}>
-                        <h3 className="md:text-xl mobile:text-lg">Under {gameData.over_under_total}</h3>
-                        <h3 className="md:text-xl mobile:text-lg">{gameData.under_odd}</h3>
-                    </div>
-                </div>
-            </div>
-        </>
-    )
-}
-export default MatchupCard;*/
