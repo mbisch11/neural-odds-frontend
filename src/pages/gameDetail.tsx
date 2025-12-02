@@ -81,7 +81,6 @@ function GameDetail() {
 
   return (
     <div className="container mx-auto px-3 sm:px-4 py-4 sm:py-8 max-w-6xl">
-      {/* Back button */}
       <button
         onClick={() => navigate("/")}
         className="flex items-center gap-2 text-accent hover:text-accent/80 transition-colors mb-4 sm:mb-6 mx-auto sm:mx-0"
@@ -90,7 +89,6 @@ function GameDetail() {
         <span className="font-semibold">Back to Games</span>
       </button>
 
-      {/* Game header */}
       <div className="bg-tertiary rounded-xl p-4 sm:p-6 mb-4 sm:mb-6 shadow-xl border border-secondary/20">
         <div className="text-center mb-4 sm:mb-6">
           <h2 className="text-xs sm:text-sm text-secondary/70 font-bold mb-2">{matchTime}</h2>
@@ -98,21 +96,17 @@ function GameDetail() {
         </div>
 
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-8">
-          {/* Away team */}
           <div className="flex-1 w-full sm:w-auto flex flex-col items-center gap-2 sm:gap-3">
             <img
               src={awayTeamData.team_badge || "/placeholder.svg"}
               className="w-16 h-16 sm:w-24 sm:h-24 object-contain drop-shadow-lg"
-              alt={awayTeamData.name}
-            />
+              alt={awayTeamData.name}/>
             <h1 className="text-lg sm:text-2xl font-bold text-white text-center">{awayTeamData.name}</h1>
             <div className="text-xs sm:text-sm text-secondary/60">{awayTeamData.location}</div>
           </div>
 
-          {/* VS divider */}
           <div className="text-2xl sm:text-3xl font-bold text-accent">VS</div>
 
-          {/* Home team */}
           <div className="flex-1 w-full sm:w-auto flex flex-col items-center gap-2 sm:gap-3">
             <img
               src={homeTeamData.team_badge || "/placeholder.svg"}
@@ -125,9 +119,7 @@ function GameDetail() {
         </div>
       </div>
 
-      {/* Markets section */}
       <div className="space-y-4 sm:space-y-6">
-        {/* Spread Market */}
         <div className="bg-tertiary rounded-xl overflow-hidden shadow-xl border border-secondary/20">
           <div className="bg-secondary/10 px-4 sm:px-6 py-3 sm:py-4 border-b border-secondary/20">
             <h3 className="text-lg sm:text-xl font-bold text-white">Spread Market</h3>
@@ -166,7 +158,6 @@ function GameDetail() {
           </div>
         </div>
 
-        {/* Totals Market */}
         <div className="bg-tertiary rounded-xl overflow-hidden shadow-xl border border-secondary/20">
           <div className="bg-secondary/10 px-4 sm:px-6 py-3 sm:py-4 border-b border-secondary/20">
             <h3 className="text-lg sm:text-xl font-bold text-white">Totals Market</h3>
@@ -174,8 +165,7 @@ function GameDetail() {
           <div className="p-4 sm:p-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-4 sm:mb-6">
               <div
-                className={`p-3 sm:p-4 rounded-lg border-2 ${picks.total_pick === true ? "bg-accent/20 border-accent" : "bg-gray-700/30 border-secondary/20"}`}
-              >
+                className={`p-3 sm:p-4 rounded-lg border-2 ${picks.total_pick === true ? "bg-accent/20 border-accent" : "bg-gray-700/30 border-secondary/20"}`}>
                 <div className="text-xs sm:text-sm text-secondary/70 mb-1">Over</div>
                 <div className="flex items-baseline gap-2">
                   <span className="text-xl sm:text-2xl font-bold text-white">O {gameData.over_under_total}</span>
@@ -186,8 +176,7 @@ function GameDetail() {
                 )}
               </div>
               <div
-                className={`p-3 sm:p-4 rounded-lg border-2 ${picks.total_pick === false ? "bg-accent/20 border-accent" : "bg-gray-700/30 border-secondary/20"}`}
-              >
+                className={`p-3 sm:p-4 rounded-lg border-2 ${picks.total_pick === false ? "bg-accent/20 border-accent" : "bg-gray-700/30 border-secondary/20"}`}>
                 <div className="text-xs sm:text-sm text-secondary/70 mb-1">Under</div>
                 <div className="flex items-baseline gap-2">
                   <span className="text-xl sm:text-2xl font-bold text-white">U {gameData.over_under_total}</span>
@@ -205,7 +194,6 @@ function GameDetail() {
           </div>
         </div>
 
-        {/* Moneyline Market */}
         <div className="bg-tertiary rounded-xl overflow-hidden shadow-xl border border-secondary/20">
           <div className="bg-secondary/10 px-4 sm:px-6 py-3 sm:py-4 border-b border-secondary/20">
             <h3 className="text-lg sm:text-xl font-bold text-white">Moneyline Market</h3>
